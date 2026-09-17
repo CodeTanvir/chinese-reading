@@ -39,6 +39,7 @@ function App() {
       );
     };
   }, []);
+  
 
   const selectedLesson =
     texts.find((lesson) => lesson.id === selectedLessonId) || texts[0];
@@ -133,7 +134,7 @@ function App() {
     const utterance = new SpeechSynthesisUtterance(text);
 
     utterance.lang = "zh-CN";
-    utterance.rate = speed;
+    utterance.rate = 0.65;
     utterance.pitch = 1;
 
     const chineseVoice = getChineseVoice();
