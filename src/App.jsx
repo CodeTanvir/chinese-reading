@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import texts from "./data/texts";
 import "./styles.css";
 import vocabulary from "./data/vocabulary";
-
+import TranslateModal from "./components/TranslateModal";
 function App() {
   const [selectedLessonId, setSelectedLessonId] = useState(texts[0]?.id);
   const [revealed, setRevealed] = useState({});
@@ -10,6 +10,13 @@ function App() {
   const [voices, setVoices] = useState([]);
   const [speed, setSpeed] = useState(0.8);
   const [speakingId, setSpeakingId] = useState(null);
+
+
+
+
+
+
+
 
   /*
    * Load browser voices.
@@ -299,7 +306,7 @@ function App() {
           </section>
 
           {/* PROGRESS */}
-          <section className="progress-card">
+          {/* <section className="progress-card">
             <div className="progress-info">
               <div>
                 <span className="progress-label">
@@ -332,8 +339,9 @@ function App() {
                 Hide all
               </button>
             </div>
-          </section>
+          </section> */}
 
+       
           {/* TEXT SECTIONS */}
           <div className="sections">
             {selectedLesson.sections?.map((section) => (
@@ -551,6 +559,7 @@ function App() {
     TANVIR_HOSSAIN
   </a>
 </p>
+<TranslateModal />
     </div>
   );
 }
