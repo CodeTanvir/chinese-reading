@@ -975,3 +975,164 @@ button {
     font-size: 13px;
   }
 }
+
+/* =========================
+   VOCABULARY
+========================= */
+
+.vocabulary-section {
+  margin-top: 0;
+
+  border-top: 1px solid #eeeeF2;
+
+  background: #ffffff;
+}
+
+.vocabulary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 17px 20px;
+
+  border-bottom: 1px solid #eeeeF2;
+}
+
+.vocabulary-label {
+  color: #4f46e5;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.vocabulary-header h3 {
+  margin: 3px 0 0;
+
+  color: #30333d;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vocabulary-count {
+  color: #a0a4ae;
+
+  font-size: 10px;
+}
+
+/* TABLE */
+
+.vocabulary-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.vocabulary-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.vocabulary-table th {
+  padding: 10px 20px;
+
+  background: #fafafd;
+
+  border-bottom: 1px solid #eeeeF2;
+
+  color: #9296a3;
+
+  text-align: left;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.vocabulary-table td {
+  padding: 11px 20px;
+
+  border-bottom: 1px solid #f0f0f3;
+
+  vertical-align: middle;
+
+  font-size: 12px;
+}
+
+.vocabulary-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.vocabulary-table tbody tr:hover {
+  background: #fcfcfe;
+}
+
+/* CHINESE */
+
+.vocabulary-word {
+  width: 28%;
+
+  color: #20232c;
+
+  font-family:
+    "Noto Sans SC",
+    sans-serif;
+
+  font-size: 27px !important;
+  font-weight: 600;
+}
+
+/* PINYIN */
+
+.vocabulary-pinyin {
+  width: 28%;
+
+  color: #4165a9;
+
+  font-size: 12px !important;
+  font-weight: 500;
+}
+
+/* MEANING */
+
+.vocabulary-meaning {
+  width: 44%;
+
+  color: #716044;
+
+  font-size: 12px !important;
+
+  line-height: 1.5;
+}
+
+/* =========================
+   VOCABULARY MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .vocabulary-header {
+    padding: 14px;
+  }
+
+  .vocabulary-table {
+    min-width: 520px;
+  }
+
+  .vocabulary-table th {
+    padding: 9px 14px;
+  }
+
+  .vocabulary-table td {
+    padding: 10px 14px;
+  }
+
+  .vocabulary-word {
+    font-size: 6px !important;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import texts from "./data/texts";
 import "./styles.css";
+import vocabulary from "./data/vocabulary";
 
 function App() {
   const [selectedLessonId, setSelectedLessonId] = useState(texts[0]?.id);
@@ -339,6 +340,53 @@ function App() {
                 className="text-card"
                 key={section.id}
               >
+                {vocabulary[section.id]?.length > 0 && (
+  <div className="vocabulary-section">
+    <div className="vocabulary-header">
+      <div>
+        <span className="vocabulary-label">
+          NEW WORDS
+        </span>
+
+        <h3>Vocabulary</h3>
+      </div>
+
+      <div className="vocabulary-count">
+        {vocabulary[section.id].length} words
+      </div>
+    </div>
+
+    <div className="vocabulary-table-wrapper">
+      <table className="vocabulary-table">
+        <thead>
+          <tr>
+            <th>Chinese</th>
+            <th>Pinyin</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {vocabulary[section.id].map((item, index) => (
+            <tr key={`${section.id}-${item.word}-${index}`}>
+              <td className="vocabulary-word">
+                {item.word}
+              </td>
+
+              <td className="vocabulary-pinyin">
+                {item.pinyin}
+              </td>
+
+              <td className="vocabulary-meaning">
+                {item.meaning}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
                 <div className="text-header">
                   <div>
                     <span className="text-label">
@@ -355,6 +403,7 @@ function App() {
                   </div>
                 </div>
 
+                
                 <div className="lines">
                   {section.lines?.map((line, index) => {
                     const isRevealed = !!revealed[line.id];
@@ -468,6 +517,8 @@ function App() {
                     );
                   })}
                 </div>
+                {/* VOCABULARY */}
+
               </section>
             ))}
           </div>

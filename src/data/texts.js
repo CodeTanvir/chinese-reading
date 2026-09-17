@@ -44,7 +44,52 @@ const texts = [
             "pinyin": "Wáng jìng: Tā bù jǐn zú qiú tī dé hǎo, xìng gé yě bù cuò.",
             "translation": "Wang Jing: He's not only good at soccer, he also has a great personality."
           }
-        ]
+        ],
+
+  "vocabulary": [
+    {
+      "word": "法律",
+      "pinyin": "fǎlù",
+      "partOfSpeech": "n.",
+      "meaning": "law"
+    },
+    {
+      "word": "俩",
+      "pinyin": "liǎ",
+      "partOfSpeech": "num.-m.",
+      "meaning": "two, both"
+    },
+    {
+      "word": "印象",
+      "pinyin": "yìnxiàng",
+      "partOfSpeech": "n.",
+      "meaning": "impression"
+    },
+    {
+      "word": "深",
+      "pinyin": "shēn",
+      "partOfSpeech": "adj.",
+      "meaning": "deep"
+    },
+    {
+      "word": "熟悉",
+      "pinyin": "shúxī",
+      "partOfSpeech": "v.",
+      "meaning": "to be familiar with"
+    },
+    {
+      "word": "不仅",
+      "pinyin": "bùjǐn",
+      "partOfSpeech": "conj.",
+      "meaning": "not only"
+    },
+    {
+      "word": "性格",
+      "pinyin": "xìnggé",
+      "partOfSpeech": "n.",
+      "meaning": "character, personality"
+    }
+  ]
       },
       {
         "id": "l1-t2",
@@ -86,7 +131,45 @@ const texts = [
             "pinyin": "Lǐ lǎo shī: Kàn lái nǐ zhēn de zhǎo dào shì hé nǐ de rén le. Zhù nǐ men xìng fú!",
             "translation": "Teacher Li: It seems you've really found the right person for you. I wish you happiness!"
           }
-        ]
+        ],
+"vocabulary": [
+    {
+      "word": "开玩笑",
+      "pinyin": "kāi wánxiào",
+      "partOfSpeech": "",
+      "meaning": "to be kidding"
+    },
+    {
+      "word": "从来",
+      "pinyin": "cónglái",
+      "partOfSpeech": "adv.",
+      "meaning": "always, all along"
+    },
+    {
+      "word": "最好",
+      "pinyin": "zuìhǎo",
+      "partOfSpeech": "adv.",
+      "meaning": "had better"
+    },
+    {
+      "word": "共同",
+      "pinyin": "gòngtóng",
+      "partOfSpeech": "adj.",
+      "meaning": "common, shared"
+    },
+    {
+      "word": "适合",
+      "pinyin": "shìhé",
+      "partOfSpeech": "v.",
+      "meaning": "to suit, to fit"
+    },
+    {
+      "word": "幸福",
+      "pinyin": "xìngfú",
+      "partOfSpeech": "adj.",
+      "meaning": "happy"
+    }
+  ]
       },
       {
         "id": "l1-t3",
@@ -128,7 +211,45 @@ const texts = [
             "pinyin": "Lǐ lǎo shī: Liǎng gè rén zài yì qǐ shí jiān zhǎng le, jiù huì yǒu hěn duō wèn tí. Zhǐ yǒu jiē shòu le tā de quē diǎn, nǐ men cái néng gèng hǎo dì yì qǐ shēng huó.",
             "translation": "Teacher Li: The longer two people are together, the more problems will come up. Only by accepting his flaws can you live together better."
           }
-        ]
+        ],
+        "vocabulary": [
+    {
+      "word": "生活",
+      "pinyin": "shēnghuó",
+      "partOfSpeech": "n./v.",
+      "meaning": "life; to live"
+    },
+    {
+      "word": "刚",
+      "pinyin": "gāng",
+      "partOfSpeech": "adv.",
+      "meaning": "just, not long"
+    },
+    {
+      "word": "浪漫",
+      "pinyin": "làngmàn",
+      "partOfSpeech": "adj.",
+      "meaning": "romantic"
+    },
+    {
+      "word": "够",
+      "pinyin": "gòu",
+      "partOfSpeech": "v.",
+      "meaning": "to be enough"
+    },
+    {
+      "word": "缺点",
+      "pinyin": "quēdiǎn",
+      "partOfSpeech": "n.",
+      "meaning": "shortcoming"
+    },
+    {
+      "word": "接受",
+      "pinyin": "jiēshòu",
+      "partOfSpeech": "v.",
+      "meaning": "to accept"
+    }
+  ]
       },
       {
         "id": "l1-t4",
@@ -140,7 +261,16 @@ const texts = [
             "pinyin": "Hěn duō nǚ hái zi xiàn mù làng màn de ài qíng. Nà shén me shì làng màn ne? Nián qīng rén shuō: Làng màn shì tā xiǎng yào yuè liàng shí, nǐ bú huì gěi tā xīng xīng; zhōng nián rén shuō: Làng màn shì jí shǐ wǎn shàng jiā bān dào líng diǎn, dào jiā shí, zì jǐ jiā lǐ yě hái liàng zhe dēng; lǎo nián rén shuō: Làng màn qí shí jiù xiàng gē zhōng chàng de nà yàng ，“ wǒ néng xiǎng dào zuì làng màn de shì, jiù shì hé nǐ yì qǐ màn màn biàn lǎo 。” qí shí, ràng wǒ men gǎn dòng de, jiù shì shēng huó zhōng jiǎn dān de ài qíng. Yǒu shí hòu, jiǎn dān jiù shì zuì dà de xìng fú.",
             "translation": "Many girls admire romantic love. So what is romance? Young people say: romance is that when she wants the moon, you won't give her stars; middle-aged people say: romance is that even if you work overtime until midnight, the light in your house is still on when you get home; elderly people say: romance is actually just like the song goes, “The most romantic thing I can think of is growing old together with you, slowly.” In fact, what moves us is the simple love found in everyday life. Sometimes, simplicity is the greatest happiness."
           }
-        ]
+        ],
+        "vocabulary":[
+  { "word": "羡慕", "pinyin": "xiànmù", "partOfSpeech": "v.", "meaning": "to envy, to admire" },
+  { "word": "爱情", "pinyin": "àiqíng", "partOfSpeech": "n.", "meaning": "love (between a man and a woman)" },
+  { "word": "星星", "pinyin": "xīngxing", "partOfSpeech": "n.", "meaning": "star" },
+  { "word": "即使", "pinyin": "jíshǐ", "partOfSpeech": "conj.", "meaning": "even if" },
+  { "word": "加班", "pinyin": "jiā bān", "partOfSpeech": "v.", "meaning": "to work overtime" },
+  { "word": "亮", "pinyin": "liàng", "partOfSpeech": "v.", "meaning": "to shine, to be lit" },
+  { "word": "感动", "pinyin": "gǎndòng", "partOfSpeech": "v.", "meaning": "to touch, to move" }
+]
       },
       {
         "id": "l1-t5",
@@ -158,7 +288,15 @@ const texts = [
             "pinyin": "Wǒ zhàng fū shì gè hěn yōu mò de rén. Jí shǐ shì hěn pǔ tōng de shì qíng, cóng tā zuǐ lǐ shuō chū lái yě huì biàn dé hěn yǒu yì si. Zài wǒ nán guò de shí hòu, tā zǒng shì yǒu bàn fǎ ràng wǒ gāo xìng qǐ lái. ér qiě tā de pí qì yě bù cuò, jié hūn kuài shí nián le, wǒ men liǎ jī hū méi yīn wèi shén me shì hóng guò liǎn, hěn duō rén dōu tè bié xiàn mù wǒ men.",
             "translation": "My husband is a very humorous person. Even the most ordinary things become interesting when they come out of his mouth. Whenever I'm feeling down, he always finds a way to cheer me up. His temper is also good — we've been married almost ten years, and we've almost never argued over anything; many people really envy us."
           }
-        ]
+        ],
+        "vocabulary":[
+  { "word": "自然", "pinyin": "zìrán", "partOfSpeech": "adv.", "meaning": "naturally, certainly" },
+  { "word": "原因", "pinyin": "yuányīn", "partOfSpeech": "n.", "meaning": "reason" },
+  { "word": "互相", "pinyin": "hùxiāng", "partOfSpeech": "adv.", "meaning": "mutually" },
+  { "word": "吸引", "pinyin": "xīyǐn", "partOfSpeech": "v.", "meaning": "to attract" },
+  { "word": "幽默", "pinyin": "yōumò", "partOfSpeech": "adj.", "meaning": "humorous" },
+  { "word": "脾气", "pinyin": "píqi", "partOfSpeech": "adj.", "meaning": "temper, disposition" }
+]
       }
     ]
   },
@@ -207,7 +345,15 @@ const texts = [
             "pinyin": "Mǎ kè: Méi wèn tí! Wǒ men xià wǔ yào qù tī zú qiú, zhèng hǎo yì qǐ qù ba.",
             "translation": "Mark: No problem! We're going to play soccer this afternoon — you can come along."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "适应", "pinyin": "shìyìng", "partOfSpeech": "v.", "meaning": "to get used to" },
+  { "word": "交", "pinyin": "jiāo", "partOfSpeech": "v.", "meaning": "to make (friends)" },
+  { "word": "平时", "pinyin": "píngshí", "partOfSpeech": "n.", "meaning": "normal times" },
+  { "word": "逛", "pinyin": "guàng", "partOfSpeech": "v.", "meaning": "to stroll, to roam" },
+  { "word": "短信", "pinyin": "duǎnxìn", "partOfSpeech": "n.", "meaning": "text message" },
+  { "word": "正好", "pinyin": "zhènghǎo", "partOfSpeech": "adv.", "meaning": "just in time, just right" }
+]
       },
       {
         "id": "l2-t2",
@@ -249,7 +395,15 @@ const texts = [
             "pinyin": "Xiǎo lín: Fàng xīn ba. Xīng qī tiān liù diǎn bàn jiàn!",
             "translation": "Xiao Lin: Don't worry. See you Sunday at 6:30!"
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "聚会", "pinyin": "jùhuì", "partOfSpeech": "v./n.", "meaning": "to have a party; party, get-together" },
+  { "word": "联系", "pinyin": "liánxì", "partOfSpeech": "v.", "meaning": "to contact" },
+  { "word": "差不多", "pinyin": "chàbuduō", "partOfSpeech": "adv.", "meaning": "almost" },
+  { "word": "专门", "pinyin": "zhuānmén", "partOfSpeech": "adv.", "meaning": "specially" },
+  { "word": "毕业", "pinyin": "bìyè", "partOfSpeech": "v.", "meaning": "to graduate" },
+  { "word": "麻烦", "pinyin": "máfan", "partOfSpeech": "v.", "meaning": "to bother" }
+]
       },
       {
         "id": "l2-t3",
@@ -291,7 +445,14 @@ const texts = [
             "pinyin": "Wáng jìng: Duì. Yào zhī dào, néng yǒu yí gè zhēn zhèng de péng yǒu, yǒu yī duàn zhēn zhèng de yǒu yì, shì duō me bù róng yì!",
             "translation": "Wang Jing: Right. You know, having a true friend and a true friendship is not easy at all!"
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "好像", "pinyin": "hǎoxiàng", "partOfSpeech": "adv.", "meaning": "as if" },
+  { "word": "重新", "pinyin": "chóngxīn", "partOfSpeech": "adv.", "meaning": "again, once more" },
+  { "word": "尽管", "pinyin": "jǐnguǎn", "partOfSpeech": "conj.", "meaning": "although" },
+  { "word": "真正", "pinyin": "zhēnzhèng", "partOfSpeech": "adj.", "meaning": "true, real" },
+  { "word": "友谊", "pinyin": "yǒuyì", "partOfSpeech": "n.", "meaning": "friendship" }
+]
       },
       {
         "id": "l2-t4",
@@ -303,7 +464,15 @@ const texts = [
             "pinyin": "Měi gè rén dōu xū yào péng yǒu, péng yǒu kě yǐ fēng fù wǒ men de shēng huó. Lí kāi péng yǒu, wǒ men de shēng huó yí dìng huì fēi cháng wú liáo. Nà me, zěn yàng cái néng jiāo dào gèng duō de péng yǒu ne? Dāng rán, yào yǒu hǎo pí qì. Yí gè pí qì bù hǎo de rén suī rán bù yí dìng ràng rén tǎo yàn, dàn shì què hěn nán gēn rén jiāo péng yǒu. Yīn wèi méi yǒu rén huì xǐ huān gēn yí gè zǒng shì róng yì shēng qì de rén zài yì qǐ. Wǒ men hái yào jīng cháng gēn zhōu wéi de rén jiāo liú. Jiāo liú néng ràng rén men hù xiāng liǎo jiě, rú guǒ yǒu gòng tóng de xìng qù, ài hào huò zhě xí guàn, jiù gèng róng yì chéng wéi péng yǒu le.",
             "translation": "Everyone needs friends — friends can enrich our lives. Without friends, our lives would surely be very dull. So how can you make more friends? Of course, you need a good temper. Someone with a bad temper may not necessarily be disliked, but it's very hard for them to make friends, because no one likes being around someone who gets angry easily. We also need to communicate often with the people around us. Communication lets people understand each other, and if you share common interests, hobbies, or habits, it becomes even easier to become friends."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "丰富", "pinyin": "fēngfù", "partOfSpeech": "v.", "meaning": "to enrich" },
+  { "word": "无聊", "pinyin": "wúliáo", "partOfSpeech": "adj.", "meaning": "boring" },
+  { "word": "讨厌", "pinyin": "tǎoyàn", "partOfSpeech": "v.", "meaning": "to dislike" },
+  { "word": "却", "pinyin": "què", "partOfSpeech": "adv.", "meaning": "but, yet" },
+  { "word": "周围", "pinyin": "zhōuwéi", "partOfSpeech": "n.", "meaning": "surrounding" },
+  { "word": "交流", "pinyin": "jiāoliú", "partOfSpeech": "v.", "meaning": "to exchange, to communicate" }
+]
       },
       {
         "id": "l2-t5",
@@ -315,7 +484,16 @@ const texts = [
             "pinyin": "Rén de yī shēng kě yǐ shén me yě méi yǒu, dàn bù néng méi yǒu péng yǒu, ér qiě bì xū yào yǒu zì jǐ zhēn zhèng de péng yǒu. Shén me shì zhēn zhèng de péng yǒu? Bù tóng de rén huì yǒu bù tóng de lǐ jiě. Yǒu xiē rén jué de péng yǒu jiù shì néng hé zì jǐ yì qǐ kuài lè de rén; yǒu xiē rén jué de péng yǒu yīng gāi xiàng jìng zi, néng bāng zì jǐ kàn dào quē diǎn. ér wǒ de lǐ jiě shì: Dāng nǐ yù dào kùn nán de shí hòu, zhēn zhèng de péng yǒu huì zhàn chū lái, jí shí gěi nǐ bāng zhù; dāng nǐ wú liáo huò zhě nán guò de shí hòu, zhēn zhèng de péng yǒu huì péi zài nǐ shēn biān, xiǎng bàn fǎ ràng nǐ gǎn dào xìng fú.",
             "translation": "A person's life can lack everything else, but it cannot lack friends — and you must have true friends of your own. What is a true friend? Different people understand it differently. Some feel a friend is someone who can be happy together with you; others feel a friend should be like a mirror, helping you see your own flaws. My own understanding is: when you run into difficulty, a true friend will step forward and help you right away; when you're bored or upset, a true friend will stay by your side and try to find ways to make you feel happy."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "理解", "pinyin": "lǐjiě", "partOfSpeech": "v.", "meaning": "to understand" },
+  { "word": "镜子", "pinyin": "jìngzi", "partOfSpeech": "n.", "meaning": "mirror" },
+  { "word": "而", "pinyin": "ér", "partOfSpeech": "conj.", "meaning": "(showing a contrast) while, yet" },
+  { "word": "当", "pinyin": "dāng", "partOfSpeech": "prep.", "meaning": "when, just at (a time or place)" },
+  { "word": "困难", "pinyin": "kùnnan", "partOfSpeech": "n.", "meaning": "difficulty" },
+  { "word": "及时", "pinyin": "jíshí", "partOfSpeech": "adv.", "meaning": "in time" },
+  { "word": "陪", "pinyin": "péi", "partOfSpeech": "v.", "meaning": "to accompany" }
+]
       }
     ]
   },
@@ -364,7 +542,15 @@ const texts = [
             "pinyin": "Xiǎo yǔ: Tīng shuō zhè cì zhāo pìn huì tí gōng de gōng zuò jī huì hěn duō, wǒ men yì qǐ qù kàn kàn ba.",
             "translation": "Xiaoyu: I heard this job fair is offering a lot of job opportunities — let's go check it out together."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "挺", "pinyin": "tǐng", "partOfSpeech": "adv.", "meaning": "quite, rather" },
+  { "word": "紧张", "pinyin": "jǐnzhāng", "partOfSpeech": "adj.", "meaning": "nervous" },
+  { "word": "信心", "pinyin": "xìnxīn", "partOfSpeech": "n.", "meaning": "confidence" },
+  { "word": "能力", "pinyin": "nénglì", "partOfSpeech": "n.", "meaning": "ability, competence" },
+  { "word": "招聘", "pinyin": "zhāopìn", "partOfSpeech": "v.", "meaning": "to recruit" },
+  { "word": "提供", "pinyin": "tígōng", "partOfSpeech": "v.", "meaning": "to provide" }
+]
       },
       {
         "id": "l3-t2",
@@ -406,7 +592,15 @@ const texts = [
             "pinyin": "Xiǎo lín: Hǎo de, nà wǒ mǎ shàng gēn tā men lián xì.",
             "translation": "Xiao Lin: Okay, I'll contact them right away."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "负责", "pinyin": "fùzé", "partOfSpeech": "v.", "meaning": "to be in charge of" },
+  { "word": "本来", "pinyin": "běnlái", "partOfSpeech": "adv.", "meaning": "originally, at first" },
+  { "word": "应聘", "pinyin": "yìngpìn", "partOfSpeech": "v.", "meaning": "to apply for a job" },
+  { "word": "材料", "pinyin": "cáiliào", "partOfSpeech": "n.", "meaning": "data, material" },
+  { "word": "符合", "pinyin": "fúhé", "partOfSpeech": "v.", "meaning": "to accord with" },
+  { "word": "通知", "pinyin": "tōngzhī", "partOfSpeech": "v.", "meaning": "to inform" }
+]
       },
       {
         "id": "l3-t3",
@@ -448,7 +642,14 @@ const texts = [
             "pinyin": "Wáng jìng: Néng lái. Suī rán zhè cì lái běi jīng, shí jiān ān pái dé hěn jǐn zhāng, dàn wǒ yí dìng jiè zhè cì jī huì qù gēn dà jiā jiàn jiàn miàn.",
             "translation": "Wang Jing: I can come. Even though my schedule is very tight on this trip to Beijing, I'll definitely use this chance to meet up with everyone."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "首先", "pinyin": "shǒuxiān", "partOfSpeech": "pron.", "meaning": "first" },
+  { "word": "正式", "pinyin": "zhèngshì", "partOfSpeech": "adj.", "meaning": "formal" },
+  { "word": "留", "pinyin": "liú", "partOfSpeech": "v.", "meaning": "to leave" },
+  { "word": "其次", "pinyin": "qícì", "partOfSpeech": "pron.", "meaning": "second, next" },
+  { "word": "诚实", "pinyin": "chéngshí", "partOfSpeech": "adj.", "meaning": "honest" }
+]
       },
       {
         "id": "l3-t4",
@@ -460,7 +661,14 @@ const texts = [
             "pinyin": "Miàn shì de shí hòu, jīng lǐ duì wǒ yìn xiàng bù cuò, hái tōng zhī wǒ míng tiān jiù kě yǐ shàng bān le. Zhēn méi xiǎng dào, zhǎo gōng zuò zhè me shùn lì. Nǐ xiǎng zhī dào miàn shì xū yào zhù yì shén me ma? Shǒu xiān, yào chuān zhèng shì de yī fú, zhè huì gěi miàn shì zhě liú xià yí gè hǎo de yìn xiàng, ràng tā jué de nǐ shì yí gè rèn zhēn de rén. Qí cì, yìng pìn shí bú yào jǐn zhāng. Huí dá wèn tí shí, shuō dé bú yào tài kuài, shēng yīn yě bú yào tài xiǎo, yào xiāng xìn zì jǐ yǒu néng lì zuò hǎo. Dāng rán, zuì zhòng yào de shì huí dá wèn tí yào chéng shí.",
             "translation": "During the interview, I made a good impression on the manager, and he even told me I could start work the next day. I never expected finding a job to go so smoothly. Do you want to know what to pay attention to during an interview? First, wear formal clothes — this leaves a good impression on the interviewer and makes them feel you're a serious person. Second, don't be nervous while applying. When answering questions, don't speak too fast, don't speak too quietly, and believe in your own ability to do well. Of course, the most important thing is to answer questions honestly."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "首先", "pinyin": "shǒuxiān", "partOfSpeech": "pron.", "meaning": "first" },
+  { "word": "正式", "pinyin": "zhèngshì", "partOfSpeech": "adj.", "meaning": "formal" },
+  { "word": "留", "pinyin": "liú", "partOfSpeech": "v.", "meaning": "to leave" },
+  { "word": "其次", "pinyin": "qícì", "partOfSpeech": "pron.", "meaning": "second, next" },
+  { "word": "诚实", "pinyin": "chéngshí", "partOfSpeech": "adj.", "meaning": "honest" }
+]
       },
       {
         "id": "l3-t5",
@@ -472,7 +680,17 @@ const texts = [
             "pinyin": "Dì yī yìn xiàng jiù shì zài dì yī cì jiàn miàn shí gěi bié rén liú xià de yìn xiàng. Suī rán dì yī yìn xiàng bù zǒng shì duì de, dàn rú guǒ xiǎng gǎi biàn què hěn kùn nán. Nǐ gěi bié rén de dì yī yìn xiàng huì yǐng xiǎng tā men yǐ hòu duì nǐ de gǎn jué hé pàn duàn. Suǒ yǐ, gěi dì yī cì jiàn miàn de tóng shì liú xià hǎo de yìn xiàng, yǐ hòu de gōng zuò kě néng huì gèng shùn lì; gěi dì yī cì jiàn miàn de gù kè liú xià hǎo de yìn xiàng, nǐ kě néng huì mài chū gèng duō de dōng xī. Dàn shì, rú guǒ dì yī cì jiàn miàn gěi bié rén liú xià xiàng bù zhǔn shí zhè yàng de huài yìn xiàng, nà me yǐ hòu jiù hěn nán ràng bié rén xiāng xìn nǐ. Suǒ yǐ bù guǎn shì shàng kè, shàng bān, hái shì yǔ bié rén yuē huì, zhǔn shí dōu fēi cháng zhòng yào.",
             "translation": "A first impression is the impression you leave on someone the first time you meet. Although a first impression isn't always accurate, it's very hard to change once formed. The first impression you give others will affect how they feel about and judge you afterward. So, leaving a good first impression on a colleague may make your future work go more smoothly; leaving a good first impression on a customer may help you sell more. But if, at a first meeting, you leave a bad impression like being unpunctual, it will be very hard afterward to get people to trust you. So whether it's attending class, going to work, or meeting someone, being on time is always very important."
           }
-        ]
+        ],
+        "vocabulary": [
+  { "word": "改变", "pinyin": "gǎibiàn", "partOfSpeech": "v.", "meaning": "to change" },
+  { "word": "感觉", "pinyin": "gǎnjué", "partOfSpeech": "n.", "meaning": "feeling" },
+  { "word": "判断", "pinyin": "pànduàn", "partOfSpeech": "v.", "meaning": "to judge, to decide" },
+  { "word": "顾客", "pinyin": "gùkè", "partOfSpeech": "n.", "meaning": "customer, client" },
+  { "word": "准时", "pinyin": "zhǔnshí", "partOfSpeech": "adj.", "meaning": "punctual, on time" },
+  { "word": "不管", "pinyin": "bùguǎn", "partOfSpeech": "conj.", "meaning": "no matter (what, how, etc.)" },
+  { "word": "与", "pinyin": "yǔ", "partOfSpeech": "prep.", "meaning": "with" },
+  { "word": "约会", "pinyin": "yuēhuì", "partOfSpeech": "v.", "meaning": "to date, to go to an appointment" }
+]
       }
     ]
   },
