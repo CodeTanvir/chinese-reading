@@ -11,6 +11,10 @@ function normalizePinyin(value) {
     .replace(/[^a-z]/g, "");
 }
 
+function containsChinese(value) {
+  return /[\u3400-\u9fff]/.test(value);
+}
+
 function PinyinComposer({ value, onChange }) {
   const [pinyinInput, setPinyinInput] = useState("");
 
@@ -62,11 +66,22 @@ function PinyinComposer({ value, onChange }) {
     setPinyinInput("");
   }
 
-  function handlePinyinChange(e) {
-    setPinyinInput(e.target.value);
+  function handleInputChange(e) {
+    const input = e.target.value;
+
+    // Chinese pasted directly
+    if (containsChinese(input)) {
+      onChange(input);
+      setPinyinInput("");
+      return;
+    }
+
+    // Pinyin typing
+    setPinyinInput(input);
   }
 
   function handleKeyDown(e) {
+    // Enter selects first suggestion
     if (
       e.key === "Enter" &&
       suggestions.length > 0
@@ -74,10 +89,6 @@ function PinyinComposer({ value, onChange }) {
       e.preventDefault();
 
       selectWord(suggestions[0]);
-    }
-
-    if (e.key === "Backspace" && !pinyinInput && value) {
-      onChange(Array.from(value).slice(0, -1).join(""));
     }
   }
 
@@ -89,48 +100,34 @@ function PinyinComposer({ value, onChange }) {
   return (
     <div className="pinyin-composer">
 
-      {/* SINGLE ROW */}
-      <div className="composer-row">
+      {/* LARGE TEXTAREA */}
+      <div className="composer-textarea-wrapper">
 
-        {/* Selected Chinese characters */}
-        <div className="composer-sentence">
-          {value && (
-            <span className="composer-selected-text">
-              {value}
-            </span>
-          )}
+        <textarea
+          className="composer-textarea"
+          value={value || pinyinInput}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          placeholder="Type pinyin to build a Chinese sentence, or paste Chinese text..."
+          rows={6}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
+        />
 
-          {/* Pinyin typing area */}
-          <input
-            type="text"
-            className="composer-pinyin-input"
-            placeholder={
-              value
-                ? "Type pinyin..."
-                : "Type pinyin to build a sentence..."
-            }
-            value={pinyinInput}
-            onChange={handlePinyinChange}
-            onKeyDown={handleKeyDown}
-            autoComplete="off"
-            autoCorrect="off"
-            spellCheck="false"
-          />
-        </div>
-
-        {/* Clear */}
         {(value || pinyinInput) && (
           <button
             className="composer-clear"
             onClick={clearSentence}
             type="button"
+            aria-label="Clear"
           >
             ×
           </button>
         )}
       </div>
 
-      {/* CHINESE CHARACTER SUGGESTIONS */}
+      {/* CHARACTER SUGGESTIONS */}
       {suggestions.length > 0 && (
         <div className="character-suggestions">
           {suggestions.map((item, index) => (
@@ -139,7 +136,6 @@ function PinyinComposer({ value, onChange }) {
               className="character-suggestion"
               onClick={() => selectWord(item)}
               type="button"
-              title={item.pinyin}
             >
               {item.word}
             </button>

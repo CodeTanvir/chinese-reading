@@ -1376,6 +1376,7 @@ button {
   }
 }
 
+
 /* ================================
    PINYIN COMPOSER
 ================================ */
@@ -1384,95 +1385,68 @@ button {
   width: 100%;
 }
 
-/* Main single row */
+/* Large textarea */
 
-.composer-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.composer-textarea-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-/* Chinese + typing input */
-
-.composer-sentence {
-  display: flex;
-  align-items: center;
-  flex: 1;
-
-  min-height: 58px;
-
-  padding: 0 16px;
+.composer-textarea {
+  width: 100%;
+  min-height: 180px;
 
   box-sizing: border-box;
 
+  padding: 16px 48px 16px 16px;
+
   border: 1px solid #d9dce5;
-  border-radius: 10px;
+  border-radius: 12px;
 
   background: #fafbff;
 
-  overflow: hidden;
-}
+  outline: none;
 
-/* Selected Chinese */
+  resize: vertical;
 
-.composer-selected-text {
-  flex-shrink: 0;
-
-  font-size: 25px;
-  font-weight: 600;
+  font-family: inherit;
+  font-size: 21px;
+  line-height: 1.7;
 
   color: #171923;
 
-  letter-spacing: 1px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-/* Pinyin typing */
-
-.composer-pinyin-input {
-  flex: 1;
-
-  min-width: 100px;
-
-  margin-left: 4px;
-
-  padding: 4px 0;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  font-family: inherit;
-  font-size: 16px;
-
-  color: #555;
-}
-
-.composer-pinyin-input::placeholder {
-  color: #a5a8b2;
-}
-
-/* Focus */
-
-.composer-sentence:focus-within {
+.composer-textarea:focus {
   border-color: #4f46e5;
 
   box-shadow:
     0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
+.composer-textarea::placeholder {
+  color: #a5a8b2;
+  font-size: 15px;
+}
+
 /* Clear button */
 
 .composer-clear {
-  width: 34px;
-  height: 34px;
+  position: absolute;
 
-  flex-shrink: 0;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
 
   border: none;
   border-radius: 50%;
 
-  background: #f1f2f5;
+  background: #eeeeF2;
 
   color: #777;
 
@@ -1483,7 +1457,7 @@ button {
 }
 
 .composer-clear:hover {
-  background: #e5e7eb;
+  background: #e2e3e8;
   color: #333;
 }
 
@@ -1493,28 +1467,24 @@ button {
 
 .character-suggestions {
   display: flex;
-
   gap: 8px;
 
   margin-top: 8px;
-
-  padding: 8px 2px;
+  padding: 4px 2px;
 
   overflow-x: auto;
 }
 
-/* Character only */
-
 .character-suggestion {
   flex-shrink: 0;
 
-  min-width: 48px;
+  min-width: 50px;
   height: 44px;
 
-  padding: 0 12px;
+  padding: 0 13px;
 
   border: 1px solid #e1e3ea;
-  border-radius: 8px;
+  border-radius: 9px;
 
   background: white;
 
@@ -1525,10 +1495,7 @@ button {
 
   cursor: pointer;
 
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .character-suggestion:hover {
@@ -1544,18 +1511,16 @@ button {
 /* Mobile */
 
 @media (max-width: 600px) {
-  .composer-sentence {
-    min-height: 54px;
+  .composer-textarea {
+    min-height: 150px;
 
-    padding: 0 12px;
+    padding: 14px 42px 14px 14px;
+
+    font-size: 19px;
   }
 
-  .composer-selected-text {
-    font-size: 22px;
-  }
-
-  .composer-pinyin-input {
-    font-size: 15px;
+  .composer-textarea::placeholder {
+    font-size: 14px;
   }
 
   .character-suggestion {
