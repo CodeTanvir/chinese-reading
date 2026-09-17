@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import texts from "./data/texts";
 import "./styles.css";
 import vocabulary from "./data/vocabulary";
@@ -550,6 +551,7 @@ function App() {
     TANVIR_HOSSAIN
   </a>
 </p>
+      <Analytics />
     </div>
   );
 }
