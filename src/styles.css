@@ -1531,3 +1531,303 @@ button {
   }
 }
 
+/* =========================================================
+   READING TEXT SELECTION TRANSLATOR
+   ========================================================= */
+
+.chinese {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+
+/* ---------------------------------------------------------
+   POPUP
+   --------------------------------------------------------- */
+
+.reading-selection-popup {
+  position: fixed;
+
+  z-index: 99999;
+
+  min-width: 150px;
+  max-width: 310px;
+
+  padding: 5px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe1e8;
+  border-radius: 12px;
+
+  box-shadow:
+    0 12px 32px rgba(35, 38, 50, 0.16),
+    0 3px 8px rgba(35, 38, 50, 0.08);
+
+  /*
+   * IMPORTANT:
+   * Popup is attached to the top of the selection
+   * and grows upward.
+   */
+  transform: translate(-50%, -100%);
+
+  transform-origin: bottom center;
+
+  animation: readingSelectionPopupShow 0.14s ease-out;
+}
+
+
+/* ---------------------------------------------------------
+   CLOSE BUTTON
+   --------------------------------------------------------- */
+
+.reading-selection-close {
+  position: absolute;
+
+  top: 6px;
+  right: 6px;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #8b8f99;
+
+  font-family: Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.reading-selection-close:hover {
+  background: #f0f1f4;
+  color: #343741;
+}
+
+
+/* ---------------------------------------------------------
+   TRANSLATE BUTTON
+   --------------------------------------------------------- */
+
+.reading-selection-translate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  width: 100%;
+
+  min-height: 40px;
+
+  padding: 8px 38px 8px 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  /*
+   * Changed from strong purple to a softer blue.
+   */
+  background: #002b28;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.reading-selection-translate-button:hover:not(:disabled) {
+  background: #0b6b65;
+}
+
+.reading-selection-translate-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.reading-selection-translate-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.reading-selection-translate-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   TRANSLATION RESULT
+   --------------------------------------------------------- */
+
+.reading-selection-result {
+  width: 270px;
+
+  max-width: min(
+    270px,
+    calc(100vw - 32px)
+  );
+
+  padding: 10px 11px 9px;
+}
+
+
+/* Header */
+
+.reading-selection-result-header {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 7px;
+
+  padding-right: 22px;
+}
+
+.reading-selection-result-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 21px;
+
+  border-radius: 5px;
+
+  background: #eff6ff;
+  color: #2563eb;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+}
+
+.reading-selection-result-label {
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #6b7280;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* Translation */
+
+.reading-selection-result-text {
+  color: #202124;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  word-break: break-word;
+}
+
+
+/* ---------------------------------------------------------
+   TRANSLATE AGAIN
+   --------------------------------------------------------- */
+
+.reading-selection-again {
+  display: block;
+
+  margin-top: 9px;
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #2563eb;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.reading-selection-again:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+
+/* ---------------------------------------------------------
+   ANIMATION
+   --------------------------------------------------------- */
+
+@keyframes readingSelectionPopupShow {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -96%)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -100%)
+      scale(1);
+  }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .reading-selection-popup {
+    max-width: calc(100vw - 20px);
+  }
+
+  .reading-selection-result {
+    width: 250px;
+
+    max-width: calc(100vw - 30px);
+  }
+
+  .reading-selection-translate-button {
+    min-height: 42px;
+
+    padding: 9px 38px 9px 15px;
+
+    font-size: 14px;
+  }
+}

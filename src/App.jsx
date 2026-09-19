@@ -3,6 +3,7 @@ import texts from "./data/texts";
 import "./styles.css";
 import vocabulary from "./data/vocabulary";
 import TranslateModal from "./components/TranslateModal";
+
 function App() {
   const [selectedLessonId, setSelectedLessonId] = useState(texts[0]?.id);
   const [revealed, setRevealed] = useState({});
@@ -11,12 +12,11 @@ function App() {
   const [speed, setSpeed] = useState(0.8);
   const [speakingId, setSpeakingId] = useState(null);
 
-
-
-
-
-
-
+  // Reading-area text selection translator
+  const [selectedText, setSelectedText] = useState("");
+  const [selectionPopup, setSelectionPopup] = useState(null);
+  const [selectionTranslation, setSelectionTranslation] = useState("");
+  const [translationLoading, setTranslationLoading] = useState(false);
 
   /*
    * Load browser voices.
@@ -46,7 +46,33 @@ function App() {
       );
     };
   }, []);
-  
+
+  /*
+   * Close reading translation popup when clicking elsewhere.
+   */
+  useEffect(() => {
+    function handleDocumentMouseDown(event) {
+      if (
+        event.target.closest(".reading-selection-popup") ||
+        event.target.closest(".chinese")
+      ) {
+        return;
+      }
+
+      setSelectionPopup(null);
+      setSelectedText("");
+      setSelectionTranslation("");
+    }
+
+    document.addEventListener("mousedown", handleDocumentMouseDown);
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleDocumentMouseDown
+      );
+    };
+  }, []);
 
   const selectedLesson =
     texts.find((lesson) => lesson.id === selectedLessonId) || texts[0];
@@ -105,6 +131,11 @@ function App() {
     setRevealed({});
     setSpeakingId(null);
 
+    // Close selection translator when changing lesson
+    setSelectedText("");
+    setSelectionPopup(null);
+    setSelectionTranslation("");
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -119,7 +150,9 @@ function App() {
   function getChineseVoice() {
     return (
       voices.find((voice) => voice.lang === "zh-CN") ||
-      voices.find((voice) => voice.lang?.toLowerCase().startsWith("zh")) ||
+      voices.find((voice) =>
+        voice.lang?.toLowerCase().startsWith("zh")
+      ) ||
       null
     );
   }
@@ -141,7 +174,7 @@ function App() {
     const utterance = new SpeechSynthesisUtterance(text);
 
     utterance.lang = "zh-CN";
-    utterance.rate = 0.65;
+    utterance.rate = speed;
     utterance.pitch = 1;
 
     const chineseVoice = getChineseVoice();
@@ -169,6 +202,132 @@ function App() {
   function stopSpeaking() {
     window.speechSynthesis?.cancel();
     setSpeakingId(null);
+  }
+
+  /*
+   * Handle selecting Chinese text inside the Reading Practice area.
+   *
+   * Example:
+   * User selects:
+   *
+   *     不能没有朋友
+   *
+   * A small Translate popup appears.
+   */
+  function handleChineseSelection(event) {
+  const selection = window.getSelection();
+
+  if (!selection || selection.isCollapsed) {
+    return;
+  }
+
+  const text = selection.toString().trim();
+
+  if (!text) {
+    return;
+  }
+
+  const chineseElement = event.currentTarget;
+
+  // Make sure selection belongs to this Chinese text
+  if (!chineseElement.contains(selection.anchorNode)) {
+    return;
+  }
+
+  if (!chineseElement.contains(selection.focusNode)) {
+    return;
+  }
+
+  const range = selection.getRangeAt(0);
+  const rect = range.getBoundingClientRect();
+
+  if (!rect || rect.width === 0) {
+    return;
+  }
+
+  setSelectedText(text);
+  setSelectionTranslation("");
+
+  /*
+   * Popup is anchored to the TOP of the selection.
+   *
+   * CSS will use:
+   *
+   * transform: translate(-50%, -100%);
+   *
+   * Therefore the popup grows UPWARD.
+   */
+  let left = rect.left + rect.width / 2;
+
+  /*
+   * Keep popup inside viewport horizontally.
+   */
+  const horizontalPadding = 12;
+
+  if (left < horizontalPadding) {
+    left = horizontalPadding;
+  }
+
+  if (left > window.innerWidth - horizontalPadding) {
+    left = window.innerWidth - horizontalPadding;
+  }
+
+  /*
+   * Normally put popup ABOVE the selected text.
+   *
+   * 10px gap between popup and selection.
+   */
+  const top = Math.max(10, rect.top - 10);
+
+  setSelectionPopup({
+    top,
+    left,
+  });
+}
+
+  /*
+   * Translate ONLY the selected reading text.
+   */
+  async function translateSelectedText() {
+    if (!selectedText || translationLoading) return;
+
+    setTranslationLoading(true);
+    setSelectionTranslation("");
+
+    try {
+      const url =
+        "https://api.mymemory.translated.net/get?" +
+        new URLSearchParams({
+          q: selectedText,
+          langpair: "zh-CN|en",
+        });
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(
+          `Translation request failed (${response.status})`
+        );
+      }
+
+      const data = await response.json();
+
+      const translatedText = data?.responseData?.translatedText;
+
+      if (!translatedText) {
+        throw new Error("No translation was returned.");
+      }
+
+      setSelectionTranslation(translatedText);
+    } catch (error) {
+      console.error("Reading translation error:", error);
+
+      setSelectionTranslation(
+        error.message || "Unable to translate this text."
+      );
+    } finally {
+      setTranslationLoading(false);
+    }
   }
 
   if (!selectedLesson) {
@@ -287,7 +446,8 @@ function App() {
           <section className="hero">
             <div className="hero-content">
               <div className="eyebrow">
-                LESSON {String(selectedLesson.number).padStart(2, "0")}
+                LESSON{" "}
+                {String(selectedLesson.number).padStart(2, "0")}
               </div>
 
               <h2>{selectedLesson.title}</h2>
@@ -341,7 +501,6 @@ function App() {
             </div>
           </section> */}
 
-       
           {/* TEXT SECTIONS */}
           <div className="sections">
             {selectedLesson.sections?.map((section) => (
@@ -350,56 +509,62 @@ function App() {
                 key={section.id}
               >
                 {vocabulary[section.id]?.length > 0 && (
-  <div className="vocabulary-section">
-    <div className="vocabulary-header">
-      <div>
-        <span className="vocabulary-label">
-          NEW WORDS
-        </span>
+                  <div className="vocabulary-section">
+                    <div className="vocabulary-header">
+                      <div>
+                        <span className="vocabulary-label">
+                          NEW WORDS
+                        </span>
 
-        <h3>Vocabulary</h3>
-      </div>
+                        <h3>Vocabulary</h3>
+                      </div>
 
-      <div className="vocabulary-count">
-        {vocabulary[section.id].length} words
-      </div>
-    </div>
+                      <div className="vocabulary-count">
+                        {vocabulary[section.id].length} words
+                      </div>
+                    </div>
 
-    <div className="vocabulary-table-wrapper">
-      <table className="vocabulary-table">
-        <thead>
-          <tr>
-            <th>Chinese</th>
-            <th>Pinyin</th>
-            <th>Meaning</th>
-          </tr>
-        </thead>
+                    <div className="vocabulary-table-wrapper">
+                      <table className="vocabulary-table">
+                        <thead>
+                          <tr>
+                            <th>Chinese</th>
+                            <th>Pinyin</th>
+                            <th>Meaning</th>
+                          </tr>
+                        </thead>
 
-        <tbody>
-          {vocabulary[section.id].map((item, index) => (
-            <tr key={`${section.id}-${item.word}-${index}`}>
-              <td className="vocabulary-word">
-                {item.word}
-              </td>
+                        <tbody>
+                          {vocabulary[section.id].map(
+                            (item, index) => (
+                              <tr
+                                key={`${section.id}-${item.word}-${index}`}
+                              >
+                                <td className="vocabulary-word">
+                                  {item.word}
+                                </td>
 
-              <td className="vocabulary-pinyin">
-                {item.pinyin}
-              </td>
+                                <td className="vocabulary-pinyin">
+                                  {item.pinyin}
+                                </td>
 
-              <td className="vocabulary-meaning">
-                {item.meaning}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-)}
+                                <td className="vocabulary-meaning">
+                                  {item.meaning}
+                                </td>
+                              </tr>
+                            )
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
                 <div className="text-header">
                   <div>
                     <span className="text-label">
-                      TEXT {String(section.number).padStart(2, "0")}
+                      TEXT{" "}
+                      {String(section.number).padStart(2, "0")}
                     </span>
 
                     <h3>
@@ -412,7 +577,6 @@ function App() {
                   </div>
                 </div>
 
-                
                 <div className="lines">
                   {section.lines?.map((line, index) => {
                     const isRevealed = !!revealed[line.id];
@@ -421,7 +585,9 @@ function App() {
                     return (
                       <article
                         className={`line ${
-                          isRevealed ? "line-revealed" : ""
+                          isRevealed
+                            ? "line-revealed"
+                            : ""
                         }`}
                         key={line.id}
                       >
@@ -430,7 +596,11 @@ function App() {
                             {String(index + 1).padStart(2, "0")}
                           </div>
 
-                          <div className="chinese">
+                          <div
+                            className="chinese"
+                            onMouseUp={handleChineseSelection}
+                            onTouchEnd={handleChineseSelection}
+                          >
                             {line.chinese}
                           </div>
 
@@ -526,40 +696,116 @@ function App() {
                     );
                   })}
                 </div>
-                {/* VOCABULARY */}
-
               </section>
             ))}
           </div>
         </main>
       </div>
-     <p
-  style={{
-    margin: "20px 8px 5px",
-    paddingTop: "15px",
-    borderTop: "1px solid #eee",
-    textAlign: "center",
-    color: "#9a9eaa",
-    fontSize: "10px",
-    lineHeight: "1.5",
-  }}
->
-  Developed by{" "}
-  <a
-    href="https://github.com/CodeTanvir"
-    target="_blank"
-    rel="noopener noreferrer"
+
+      <p
+        style={{
+          margin: "20px 8px 5px",
+          paddingTop: "15px",
+          borderTop: "1px solid #eee",
+          textAlign: "center",
+          color: "#9a9eaa",
+          fontSize: "10px",
+          lineHeight: "1.5",
+        }}
+      >
+        Developed by{" "}
+        <a
+          href="https://github.com/CodeTanvir"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "#4f46e5",
+            fontWeight: "700",
+            textDecoration: "none",
+            letterSpacing: "0.3px",
+          }}
+        >
+          TANVIR_HOSSAIN
+        </a>
+      </p>
+
+      {/* Existing full translator modal */}
+      <TranslateModal />
+
+      {/* READING AREA SELECTION TRANSLATOR */}
+   {selectionPopup && selectedText && (
+  <div
+    className="reading-selection-popup"
     style={{
-      color: "#4f46e5",
-      fontWeight: "700",
-      textDecoration: "none",
-      letterSpacing: "0.3px",
+      top: `${selectionPopup.top}px`,
+      left: `${selectionPopup.left}px`,
+    }}
+    onMouseDown={(event) => {
+      event.preventDefault();
+      event.stopPropagation();
     }}
   >
-    TANVIR_HOSSAIN
-  </a>
-</p>
-<TranslateModal />
+    {/* CLOSE BUTTON */}
+    <button
+      className="reading-selection-close"
+      onClick={() => {
+        setSelectionPopup(null);
+        setSelectedText("");
+        setSelectionTranslation("");
+        setTranslationLoading(false);
+      }}
+      aria-label="Close"
+      title="Close"
+    >
+      ×
+    </button>
+
+    {!selectionTranslation && (
+      <button
+        className="reading-selection-translate-button"
+        onClick={translateSelectedText}
+        disabled={translationLoading}
+      >
+        <span className="reading-selection-translate-icon">
+          🌐
+        </span>
+
+        <span>
+          {translationLoading
+            ? "Translating..."
+            : "Translate"}
+        </span>
+      </button>
+    )}
+
+    {selectionTranslation && (
+      <div className="reading-selection-result">
+        <div className="reading-selection-result-header">
+          <span className="reading-selection-result-icon">
+            EN
+          </span>
+
+          <span className="reading-selection-result-label">
+            English
+          </span>
+        </div>
+
+        <div className="reading-selection-result-text">
+          {selectionTranslation}
+        </div>
+
+        <button
+          className="reading-selection-again"
+          onClick={() => {
+            setSelectionTranslation("");
+          }}
+        >
+          Translate again
+        </button>
+      </div>
+    )}
+  </div>
+)}
     </div>
   );
 }
